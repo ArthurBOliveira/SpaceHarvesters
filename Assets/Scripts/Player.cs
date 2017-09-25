@@ -74,16 +74,16 @@ public class Player : MonoBehaviour
     {
 
         //Keyboard
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        GetComponent<Rigidbody>().velocity = movement * speed;
+        //Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        //GetComponent<Rigidbody>().velocity = movement * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Shoot();
+        //}
 
         //Mouse
         //float mouseX = Input.GetAxis("Mouse X");
@@ -93,14 +93,14 @@ public class Player : MonoBehaviour
         //GetComponent<Transform>().position += Vector3.forward * mouseY * speed;
 
         //Touch
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        //{
-        //    // Get movement of the finger since last frame
-        //    Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            // Get movement of the finger since last frame
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
-        //    // Move object across XY plane
-        //    transform.Translate(touchDeltaPosition.x * speed, 0, touchDeltaPosition.y * speed);
-        //}
+            // Move object across XY plane
+            transform.Translate(touchDeltaPosition.x * speed, 0, touchDeltaPosition.y * speed);
+        }
 
         GetComponent<Rigidbody>().position = new Vector3(
             Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
