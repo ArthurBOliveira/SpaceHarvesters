@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>MiniJson</name></assembly>
+<members>
+<member name="P:MiniJson.Adaptor.JsonParser.Success">
+<summary>
+ Returns true when parse succeeded
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParser.Result">
+<summary>
+ Gets the parsed JSON object, throws JsonParseException on parse failure
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParser.ParsePosition">
+<summary>
+ Gets the position where parsing stopped. Note the position might point beyond end of string
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParser.ParseMessage">
+<summary>
+ Gets the parse message, the message describes any potential parse failures
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParser.Failure">
+<summary>
+ Returns true when parse failed
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParser.DynamicResult">
+<summary>
+ Gets the parsed JSON object as DynamicObject, throws JsonParseException on parse failure
+</summary>
+</member>
+<member name="T:MiniJson.Adaptor.JsonParser">
+<summary>
+ JsonParser parses a JSON string
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.HasValue">
+<summary>
+ Returns true if the referenced JSON object exists
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetLength">
+<summary>
+ Gets the number of child items the referenced JSON object has
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetJsonString">
+<summary>
+ Gets the referenced JSON object as string
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetJsonString(System.Boolean)">
+<summary>
+ Gets the referenced JSON object as string
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetJsonPathString">
+<summary>
+ Gets the JSON Path object as string
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetJsonPath">
+<summary>
+ Gets the JSON Path object
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetJson">
+<summary>
+ Gets the referenced JSON object
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.GetChildren">
+<summary>
+ Returns children of referenced JSON object
+</summary>
+</member>
+<member name="M:MiniJson.Adaptor.JsonDynamicObject.ConvertToFloat(System.Double)">
+<summary>
+ Converts the referenced JSON object to float (double),
+   if conversion fails returns &apos;f&apos;
+</summary>
+</member>
+<member name="T:MiniJson.Adaptor.JsonDynamicObject">
+<summary>
+ JsonDynamicObject implements DynamicObject which allows C# (and VB) to
+   explore JSON values using dynamic lookup
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParseException.ErrorPosition">
+<summary>
+ Gets the position where parsing stopped. Note the position might point beyond end of string
+</summary>
+</member>
+<member name="P:MiniJson.Adaptor.JsonParseException.ErrorMessage">
+<summary>
+ Gets the error message, the message describes any potential parse failures
+</summary>
+</member>
+<member name="T:MiniJson.Adaptor.JsonParseException">
+<summary>
+ JsonParseException (msg, pos) is raised during parser errors
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonPath.PathError">
+<summary>
+ (errors, json, parents) - Holds the invalid path elements, the last valid json element and its parents
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonPath.PathOk">
+<summary>
+ (json, parents)         - Holds the current json element and its parents
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.JsonPath.op_Dynamic(MiniJson.DynamicJsonModule.JsonPath,System.String)">
+<summary>
+ Returns a path to the named element of the referenced object element,
+   if it&apos;s not an object or named element doesn&apos;t exists returns a PathError
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.JsonPath.op_BangBang(MiniJson.DynamicJsonModule.JsonPath)">
+<summary>
+ Evaluates the path producing the referenced scalar element (scalar meaning null, bool, number, string or error)
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.Names">
+<summary>
+ Returns all property names in order (and with potential duplicates)
+   if it&apos;s not an object or named element doesn&apos;t exists returns an empty array
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.Length">
+<summary>
+ Returns the Length of the referenced array element,
+   if it&apos;s not an array returns 0
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.HasValue">
+<summary>
+ Returns true if the path elements references a valid scalar element,
+   if the referenced scalar element couldn&apos;t be converted successfully returns false.
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.Eval">
+<summary>
+ Evaluates the path producing the referenced scalar element (scalar meaning null, bool, number, string or error)
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.Children">
+<summary>
+ Returns all children as an array of values in order (and with potential duplicates)
+   if it&apos;s not an object, array or named element doesn&apos;t exists returns an empty array
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.AsString">
+<summary>
+ Returns a string representation of the referenced scalar element,
+   null values and errors are represented as &quot;&quot;.
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.AsFloat">
+<summary>
+ Returns a float representation of the referenced scalar element,
+   if the referenced scalar element couldn&apos;t be converted successfully returns 0.0.
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.AsExpandedString">
+<summary>
+ Returns the expanded string representation of the referenced scalar element.
+   Expanded means null values are represented as &apos;null&apos; and full error error infos are generated for errors.
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonPath.AsBool">
+<summary>
+ Returns a boolean representation of the referenced scalar element,
+   if the referenced scalar element couldn&apos;t be converted successfully returns false.
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.JsonPath.Item(System.Int32)">
+<summary>
+ Returns a path to the element at the index of the referenced array element,
+   if it&apos;s not an array or out of bounds returns a PathError
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.JsonPath.Get(System.String)">
+<summary>
+ Returns a path to the named element of the referenced object element,
+   if it&apos;s not an object or named element doesn&apos;t exists returns a PathError
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.JsonPath.ConvertToFloat(System.Double)">
+<summary>
+ Returns a float representation of the referenced scalar element.
+   This allows the user to specify the value to return if the referenced scalar element couldn&apos;t be converted successfully.
+   @defaultTo  - The float to default to if the referenced scalar element couldn&apos;t be converted successfully.
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonPath">
+<summary>
+ Represents a path to a JSON element
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar.ScalarInvalidPath">
+<summary>
+ (json, parents)         - An errors representing that the referenced element doesn&apos;t exist
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar.ScalarNotScalar">
+<summary>
+ (json, parents)         - An errors representing that the referenced element is not a scalar
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar.ScalarString">
+<summary>
+ (json, parents)         - Represents a string scalar
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar.ScalarNumber">
+<summary>
+ (json, parents)         - Represents a number (float) scalar
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar.ScalarBoolean">
+<summary>
+ (json, parents)         - Represents a bool scalar
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar.ScalarNull">
+<summary>
+ (json, parents)         - Represents a null scalar
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonScalar.IsError">
+<summary>
+ Returns true if it&apos;s an invalid scalar element
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonScalar.HasValue">
+<summary>
+ Returns true if it&apos;s a valid scalar element,
+   if the scalar element couldn&apos;t be converted successfully returns false.
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonScalar.AsString">
+<summary>
+ Returns a string representation of the scalar element.
+   Null values and errors are represented as &quot;&quot;
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonScalar.AsFloat">
+<summary>
+ Returns a float representation of the scalar element,
+   if the scalar element couldn&apos;t be converted successfully returns 0.0.
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonScalar.AsExpandedString">
+<summary>
+ Returns the expanded string representation of the scalar element.
+   Expanded means null values are represented as &apos;null&apos; and full error error infos are generated for errors
+</summary>
+</member>
+<member name="P:MiniJson.DynamicJsonModule.JsonScalar.AsBool">
+<summary>
+ Returns a boolean representation of the scalar element,
+   if the scalar element couldn&apos;t be converted successfully returns false.
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.JsonScalar.ConvertToFloat(System.Double)">
+<summary>
+ Returns a float representation of the scalar element.
+   This allows the user to specify the value to return if the scalar element couldn&apos;t be converted successfully
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonScalar">
+<summary>
+ Represents a JSON scalar (null, bool, number, string or error)
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.InvalidPath">
+<summary>
+ (errors, json, parents) - Represents an invalid Path to a JSON element
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.Path">
+<summary>
+ (json, parents) - Represents a valid Path to a JSON element
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQueryError.ErrorIndexOutBounds">
+<summary>
+ (name)  - Represents a invalid JSON element array indexing query as the index was out of bounds
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQueryError.ErrorUnknownProperty">
+<summary>
+ (name)  - Represents a invalid JSON element object property query as the property didn&apos;t exist
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQueryError.ErrorNotIndexable">
+<summary>
+ (name)  - Represents a invalid JSON element array indexing query as the referenced element wasn&apos;t an array
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQueryError.ErrorNotObject">
+<summary>
+ (name)  - Represents a invalid JSON element object property query as the referenced element wasn&apos;t an object
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQueryError">
+<summary>
+ Represents an invalid JSON element query
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQuery.QueryIndexOf">
+<summary>
+ (index) - Represents a valid JSON element array indexing query
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQuery.QueryProperty">
+<summary>
+ (name)  - Represents a valid JSON element object property query
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule.JsonQuery">
+<summary>
+ Represents a valid JSON element query
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.Json.get_Query(MiniJson.JsonModule.Json)">
+<summary>
+ Creates a JsonPath object from a JSON document
+</summary>
+</member>
+<member name="M:MiniJson.DynamicJsonModule.makePath(MiniJson.JsonModule.Json)">
+<summary>
+ Creates a JsonPath object from a JSON document
+   @json - A JSON document
+</summary>
+</member>
+<member name="T:MiniJson.DynamicJsonModule">
+<summary>
+ MiniJson aims to be a minimal yet conforming JSON parser with reasonable performance and decent error reporting
+   JSON Specification: http://json.org/
+   JSON Lint         : http://jsonlint.com/
+
+ MiniJson.DynamicJsonModule contains functionality query a JSON document using
+ op_Dynamic ( ? ) in F#
+
+
+ Example:
+ --------
+   let root = json.Query
+
+   for i = 0 to root.Length - 1 do
+     let v     = root.[i]
+     let id    = v?id.AsString
+     let name  = v?name.AsString
+     let age   = v?age.AsFloat
+     printfn &quot;Record - %d: id:%s, name:%s, age:%f&quot; i id name age
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.ParseResult.Failure">
+<summary>
+ (message, pos) - Holds the error description and position of failure
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.ParseResult.Success">
+<summary>
+ (json) - Holds the parsed JSON document
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.ParseResult">
+<summary>
+ Returned by parse function
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.IParseVisitor">
+<summary>
+ IParseVisitor is implemented by users wanting to parse
+   a JSON document into a data structure other than MiniJson.Json
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json.JsonObject">
+<summary>
+ (members)  - Represents a JSON object value
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json.JsonArray">
+<summary>
+ (values)   - Represents a JSON array value
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json.JsonString">
+<summary>
+ (value)    - Represents a JSON string value
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json.JsonNumber">
+<summary>
+ (value)    - Represents a JSON number value
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json.JsonBoolean">
+<summary>
+ (value)    - Represents a JSON boolean value
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json.JsonNull">
+<summary>
+ ()         - Represents a JSON null value
+</summary>
+</member>
+<member name="M:MiniJson.JsonModule.Json.ToString">
+<summary>
+ Converts a JSON document into a string
+</summary>
+</member>
+<member name="M:MiniJson.JsonModule.Json.ToString(System.Boolean)">
+<summary>
+ Converts a JSON document into a string
+   @doIndent  : True to indent
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule.Json">
+<summary>
+ Represents a JSON document
+</summary>
+</member>
+<member name="M:MiniJson.JsonModule.parse(System.Boolean,System.String)">
+<summary>
+ Attempts to parse a JSON document from a string
+   @fullErrorInfo : True to generate full errorinfo
+                   False only shows position (faster)
+   @input         : Input string
+</summary>
+</member>
+<member name="M:MiniJson.JsonModule.tryParse(MiniJson.JsonModule.IParseVisitor,System.String,System.Int32@)">
+<summary>
+ Attempts to parse a JSON document from a string
+   visitor : Parser visitor object
+   input   : Input string
+</summary>
+</member>
+<member name="M:MiniJson.JsonModule.toString(System.Boolean,MiniJson.JsonModule.Json)">
+<summary>
+ Converts a JSON document into a string
+   @doIndent  : True to indent
+   @json      : The JSON document
+</summary>
+</member>
+<member name="T:MiniJson.JsonModule">
+<summary>
+ MiniJson aims to be a minimal yet conforming JSON parser with reasonable performance and decent error reporting
+   JSON Specification: http://json.org/
+   JSON Lint         : http://jsonlint.com/
+
+ MiniJson.JsonModule contains functionality to parse and serialize a JSON document
+
+
+ Example:
+ --------
+     let jsonText = &quot;&quot;&quot;[{&quot;id&quot;:&quot;123&quot;, &quot;name&quot;:&quot;Mr. Big&quot;, &quot;age&quot;:30}, {&quot;id&quot;:&quot;123&quot;, &quot;name&quot;:&quot;Mr. X&quot;}]&quot;&quot;&quot;
+
+     match parse true jsonText with  // true for full error-info
+     | Failure (msg, pos)  -&gt; printfn &quot;Failure@%d\n%s&quot; pos msg
+     | Success json        -&gt;
+       printfn &quot;Success\n%s&quot; &lt;| toString true json  // true to indent JSON
+</summary>
+</member>
+</members>
+</doc>
